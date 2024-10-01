@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5B2A86;
+}
+.container {
+    width: 80%;
+    margin: 100px auto 20px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+}
+.navbar {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    background-color: white;
+    top: 0;
+    position: fixed;
+    margin-bottom: 20px;
+    padding: 20px;
+    z-index: 100;
+}
+.menu {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+.menu-content {
+    width: 25%;
+    height: 100%;
+    background-color: #1C9AEA;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-100%);
+}
+.menu.active .menu-content{
+    transform: translateX(0);
+}
+.cerrar {
+    position: absolute;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    top: 20px;
+    left: 20px;
+}
+
+.menu-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+}
+.menu-links a {
+    margin: -2px 0 0 0;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 50px;
+    border: 2px solid white;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.menu-links a form{
+    width: 100%;
+}
+.menu-links a:hover{
+    background-color: #32E875;
+}
+.burger {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.burger div {
+    background-color: black;
+    height: 2px;
+    width: 20px;
+    margin: 2px 0;
+}
+
+.title {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+.logo {
+    margin: -10px 0;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.logo img {
+    width: 100%;
+    max-width: 200px;
+    z-index: 1;
+}
+.btn-Salir{
+    text-align: left;
+    padding-left: 0;
+    width: 100%;
+    background-color: #1C9AEA;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+}

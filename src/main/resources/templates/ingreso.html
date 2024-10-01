@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria San Cristóbal</title>
+    <link rel="stylesheet" type="text/css" href="css/ingresoStyle.css">
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="img/Logo.png" alt="logo veterinaria san cristobal" class="logo">
+    </div>
+
+    <h4 th:text="'Bienvenido, '+${nombre}"></h4>
+
+    <div class="button-container">
+        <a href="/vender" class="button">
+            <button> Vender Producto </button>
+        </a>
+
+        <a href="/registros" class="button">
+            <button>Gestionar Inventario</button>
+        </a>
+
+        <a href="/registros" class="button">
+            <button>Registro de Ventas</button>
+        </a>
+
+        <a href="/registroClientes" class="button">
+            <button>Registro de Cliente</button>
+        </a>
+
+        <a sec:authorize="hasRole('ADMIN')" href="/registroUsuario" class="button">
+            <BUTTON>Registrar Usuario</BUTTON>
+        </a>
+
+        <form  th:action="@{/logout}" method="post" class="button">
+            <button>Salir</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

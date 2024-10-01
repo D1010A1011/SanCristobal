@@ -1,0 +1,47 @@
+<div  th:fragment="vendidos">
+    <div>
+        <h2>Registros de productos vendidos</h2>
+        <div class="btn-auxiliar " style="margin-bottom: 20px">
+            <div>
+                <label for="fecha">Fecha</label>
+                <input class="input-20" id="fecha" type="date" required>
+            </div>
+
+            <div>
+                <label for="cliente">Documento/Nit de Empresa</label>
+                <input type="text" class="input-20" id="cliente"  required>
+            </div>
+
+            <div>
+                <label for="vendedor">Vendedor</label>
+                <input type="text" id="vendedor" class="input-20">
+            </div>
+        </div>
+        <div class="btn-auxiliar " style="margin-bottom: 20px">
+            <button>Buscar por el Código</button>
+            <button>Actualizar el Producto</button>
+            <button>Eliminar el Producto</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <td>Fecha</td>
+            <td>Documento/nit</td>
+            <td>Vendedor</td>
+            <td>Total</td>
+            <td>Detalles</td>
+        </tr>
+        </thead>
+        <tbody id="inventarioBody">
+        <tr >
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

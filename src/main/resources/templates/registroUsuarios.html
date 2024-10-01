@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="css/usuarioStyle.css">
+</head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar('Registro de Usuarios')}"></div>
+<div class="container">
+    <form class="formulario" th:action="@{/registro}" th:object="${usuario}" method="post">
+        <label>Nombre</label>
+        <input type="text" th:field="*{nombre}" required />
+        <LABEL>Correo Electrónico</LABEL>
+        <input id="ema" type="email" th:field="*{email}" required />
+        <label>Contraseña</label>
+        <input type="password" th:field="*{password}" required />
+        <button type="submit">Registrar</button>
+    </form>
+</div>
+</body>
+</html>

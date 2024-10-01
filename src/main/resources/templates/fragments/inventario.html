@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="../../static/css/usuarioStyle.css">
+<div th:fragment="inventario">
+    <div>
+        <h2>Formulario para agregar/actualizar productos al inventario</h2>
+        <form class="formulario" method="post" th:action="@{/nuevo}" th:object="${producto}">
+            <div>
+                <label for="codigo">Código</label>
+                <input id="codigo" type="text" th:field="*{codigo}" required>
+
+                <label for="precio">Valor Unitario</label>
+                <input id="precio" type="number" th:field="*{precio}" required>
+
+                <label for="stock">Cantidad Disponible</label>
+                <input type="text" id="stock" th:field="*{stock}" required>
+            </div>
+
+            <div>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" th:field="*{nombre}" required>
+
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" th:field="*{categoria}">
+                <button type="submit">Agregar Producto al Inventario</button>
+            </div>
+        </form>
+        <div class="btn-auxiliar">
+            <button>Buscar por el Código</button>
+            <button>Actualizar el Producto</button>
+            <button>Eliminar el Producto</button>
+        </div>
+    </div>
+
+    <h2>Inventario de Productos</h2>
+    <table>
+        <thead>
+        <tr>
+            <td>Código</td>
+            <td>Nombre</td>
+            <td>Categoria</td>
+            <td>Stock Disponible</td>
+            <td>Valor U.</td>
+        </tr>
+        </thead>
+        <tbody id="inventarioBody">
+            <tr th:each="producto:${inventario}">
+                <td th:text="${producto.value.codigo}"></td>
+                <td th:text="${producto.value.nombre}"></td>
+                <td th:text="${producto.value.categoria}"></td>
+                <td th:text="${producto.value.stock}"></td>
+                <td th:text="${producto.value.precio}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

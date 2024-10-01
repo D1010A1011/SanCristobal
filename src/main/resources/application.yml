@@ -1,0 +1,25 @@
+spring:
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://dpg-crrveb8gph6c738mjk40-a.oregon-postgres.render.com:5432/veterinaria_2yc7?sslmode=require
+    username: veterinaria_2yc7_user
+    password: rTpJjcrJgpI7ZXTCUeLTv96MFC7IvMA3
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+logging:
+  level:
+    org:
+    springframework:
+      security: DEBUG

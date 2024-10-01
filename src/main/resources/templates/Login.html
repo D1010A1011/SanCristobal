@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+    <title>Login - Veterinaria San Cristóbal</title>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="login-box">
+        <div class="logo-container">
+            <img src="img/Logo.png" alt="logo veterinaria san cristobal" class="logo" />
+        </div>
+        <h5 style="color: red" th:if="${param.error}">Error al iniciar sesión, por favor revisa tus datos</h5>
+        <div class="form-container">
+            <form class="login-form" th:action="@{/login}" method="post">
+                <input class="input-field" placeholder="Correo" type="email" name="email" id="email"/>
+                <input class="input-field" placeholder="Contraseña" type="password" name="password" id="password"/>
+                <button class="submit-button" type="submit">
+                    Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

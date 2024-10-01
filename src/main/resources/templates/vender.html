@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto de Venta</title>
+    <link rel="stylesheet" th:href="@{css/ventaStyle.css}">
+    <script src="js/puntoVenta.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="carrito" id="carrito" >
+    <div class="carrito-container">
+        <h2>Carrito:</h2>
+        <table id="carrito-table">
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Valor Unit.</th>
+                <th>Valor Total</th>
+            </tr>
+            </thead>
+            <tbody id="carritoBody">
+            </tbody>
+        </table>
+        <h2 onclick="toggleCar()">Cerrar</h2>
+    </div>
+</div>
+
+    <nav th:replace="~{fragments/navbar ::navbar('Punto de Venta')}"></nav>
+
+<div class="container">
+
+    <div class="main-content">
+        <div class="left-panel">
+            <h2>Buscar Producto</h2>
+            <div class="hcontent">
+                <input type="text" id="codigo-input" placeholder="Código" REQUIRED>
+                <button id="btBuscar" onclick="buscarProducto()">Buscar Producto</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <h2>Mi Carrito</h2>
+            <p id="valor-total">Valor total: COP: $0</p>
+            <div class="hcontent">
+                <form th:action="@{/vender}" method="post">
+                    <input type="hidden" id="total" name="total">
+                    <input type="hidden" id="client" name="client">
+                    <input type="hidden" id="carrito-input" name="carrito">
+                    <button type="submit" id="comprar-btn">Comprar Carrito</button>
+                </form>
+                <button onclick="toggleCar()">Ver Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container" onclick="toogleTableBusqueda()">
+        <table class="busqueda-table" id="busqueda-table" >
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Valor Unit.</th>
+                <th>Acción</th>
+            </tr>
+            </thead>
+            <tbody id="busquedaBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h2>Resultados:</h2>
+        <table id="productos-table">
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Valor Unit.</th>
+                <th>Acción</th>
+            </tr>
+            </thead>
+            <tbody th:each="producto:${productos}">
+            <td th:text="${producto.value.codigo}"></td>
+            <td th:text="${producto.value.nombre}"></td>
+            <td th:text="${producto.value.categoria}"></td>
+            <td th:text="${producto.value.stock}"></td>
+            <td th:text="${producto.value.precio}"></td>
+            <td><button class="agregar-carrito-btn"
+                    th:id="'bt-'+${producto.value.codigo}"
+                    th:data-codigo="${producto.value.codigo}"
+                    th:data-nombre="${producto.value.nombre}"
+                    th:data-precio="${producto.value.precio}"
+                    th:data-stock="${producto.value.stock}">Agregar</button></td>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
